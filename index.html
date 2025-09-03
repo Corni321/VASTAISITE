@@ -1,147 +1,479 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-        <title>VastAI-Media-Website-Final</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script type="module" crossorigin src="/assets/index-ZylVMCXT.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-ByZFhA0N.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VastAI Media - AI-Powered Business Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+        
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .cta-button:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .services {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .services h2 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .service-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        .about {
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .about h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .about-content {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .contact {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .contact h2 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .submit-btn {
+            background: #f39c12;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #e67e22;
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div id="root"></div>
-  
-  <!-- BuildMyAgent.io Chatbot Widget -->
-  <script>
-    // Load chatbot after page is ready
-    window.addEventListener('load', function() {
-      const script = document.createElement('script');
-      script.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
-      script.async = true;
-      script.onerror = function() {
-        console.log('Chatbot script failed to load, retrying...');
-        // Retry loading the script once
-        setTimeout(function() {
-          const retryScript = document.createElement('script');
-          retryScript.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
-          retryScript.async = true;
-          document.body.appendChild(retryScript);
-        }, 2000);
-      };
-      document.body.appendChild(script);
-    });
-  </script>
-<style>
-#minimax-floating-ball {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 12px;
-  background: #222222;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  color: #F8F8F8;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  z-index: 9999;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  cursor: pointer;
-}
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">VastAI Media</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-#minimax-floating-ball:hover {
-  transform: translateY(-2px);
-  background: #383838;
-}
-.minimax-ball-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>VastAI Media</h1>
+                <p>Empowering Businesses with AI-Driven Solutions</p>
+                <a href="#services" class="cta-button">Explore Our Services</a>
+            </div>
+        </section>
 
-.minimax-logo-wave {
-  width: 26px;
-  height: 22px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22' viewBox='0 0 26 22' fill='none'%3E%3Cg clip-path='url(%23clip0_3442_102412)'%3E%3Cpath d='M12.8405 14.6775C12.8405 14.9897 13.0932 15.2424 13.4055 15.2424C13.7178 15.2424 13.9705 14.9897 13.9705 14.6775V2.98254C13.9705 1.88957 13.0809 1 11.9879 1C10.895 1 10.0054 1.88957 10.0054 2.98254V11.566V17.1068C10.0054 17.5773 9.62327 17.9594 9.1528 17.9594C8.68233 17.9594 8.30021 17.5773 8.30021 17.1068V8.04469C8.30021 6.95172 7.41063 6.06215 6.31767 6.06215C5.22471 6.06215 4.33513 6.95172 4.33513 8.04469V11.8855C4.33513 12.3559 3.953 12.7381 3.48254 12.7381C3.01207 12.7381 2.62994 12.3559 2.62994 11.8855V10.4936C2.62994 10.1813 2.37725 9.92861 2.06497 9.92861C1.7527 9.92861 1.5 10.1813 1.5 10.4936V11.8855C1.5 12.9784 2.38957 13.868 3.48254 13.868C4.5755 13.868 5.46508 12.9784 5.46508 11.8855V8.04469C5.46508 7.57422 5.8472 7.19209 6.31767 7.19209C6.78814 7.19209 7.17026 7.57422 7.17026 8.04469V17.1068C7.17026 18.1998 8.05984 19.0894 9.1528 19.0894C10.2458 19.0894 11.1353 18.1998 11.1353 17.1068V2.98254C11.1353 2.51207 11.5175 2.12994 11.9879 2.12994C12.4584 2.12994 12.8405 2.51207 12.8405 2.98254V14.6775Z' fill='%23F8F8F8'/%3E%3Cpath d='M23.3278 6.06215C22.2348 6.06215 21.3452 6.95172 21.3452 8.04469V15.6143C21.3452 16.0847 20.9631 16.4669 20.4926 16.4669C20.0222 16.4669 19.6401 16.0847 19.6401 15.6143V2.98254C19.6401 1.88957 18.7505 1 17.6575 1C16.5645 1 15.675 1.88957 15.675 2.98254V19.0175C15.675 19.4879 15.2928 19.8701 14.8224 19.8701C14.3519 19.8701 13.9698 19.4879 13.9698 19.0175V17.0329C13.9698 16.7206 13.7171 16.4679 13.4048 16.4679C13.0925 16.4679 12.8398 16.7206 12.8398 17.0329V19.0175C12.8398 20.1104 13.7294 21 14.8224 21C15.9153 21 16.8049 20.1104 16.8049 19.0175V2.98254C16.8049 2.51207 17.187 2.12994 17.6575 2.12994C18.128 2.12994 18.5101 2.51207 18.5101 2.98254V15.6143C18.5101 16.7072 19.3997 17.5968 20.4926 17.5968C21.5856 17.5968 22.4752 16.7072 22.4752 15.6143V8.04469C22.4752 7.57422 22.8573 7.19209 23.3278 7.19209C23.7982 7.19209 24.1804 7.57422 24.1804 8.04469V14.6775C24.1804 14.9897 24.4331 15.2424 24.7453 15.2424C25.0576 15.2424 25.3103 14.9897 25.3103 14.6775V8.04469C25.3103 6.95172 24.4207 6.06215 23.3278 6.06215Z' fill='%23F8F8F8'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3442_102412'%3E%3Crect width='25' height='22' fill='white' transform='translate(0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our AI Solutions</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>AI Content Creation</h3>
+                        <p>Generate high-quality content, articles, and marketing materials using advanced AI technology tailored to your brand voice.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Intelligent Automation</h3>
+                        <p>Streamline your business processes with smart automation solutions that reduce costs and improve efficiency.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Data Analytics & Insights</h3>
+                        <p>Transform your raw data into actionable insights with our powerful AI-driven analytics platform.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>AI Chatbots & Support</h3>
+                        <p>Enhance customer experience with intelligent chatbots that provide 24/7 support and personalized interactions.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>Machine Learning Solutions</h3>
+                        <p>Custom ML models designed to solve your specific business challenges and drive innovation.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>AI Strategy Consulting</h3>
+                        <p>Expert guidance on implementing AI solutions that align with your business objectives and maximize ROI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-.minimax-ball-text {
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-}
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About VastAI Media</h2>
+                <div class="about-content">
+                    <p>At VastAI Media, we're passionate about harnessing the power of artificial intelligence to transform businesses. Our team of experts combines cutting-edge AI technology with deep industry knowledge to deliver solutions that drive real results.</p>
+                    <br>
+                    <p>Whether you're looking to automate processes, gain deeper insights from your data, or create more engaging content, we have the expertise to help you succeed in the AI-driven future.</p>
+                </div>
+            </div>
+        </section>
 
-.minimax-close-icon {
-  margin-left: 8px;
-  font-size: 16px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get Started Today</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Company Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Tell us about your project or how we can help you..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
-.minimax-close-icon:hover {
-  opacity: 1;
-}
-</style>
-<div id="minimax-floating-ball">
-  <div class="minimax-ball-content">
-    <div class="minimax-logo-wave"></div>
-    <span class="minimax-ball-text">Created by MiniMax Agent</span>
-  </div>
-  <div class="minimax-close-icon">×</div>
-</div>
-<script>
-// Initialize floating ball functionality
-function initFloatingBall() {
-  const ball = document.getElementById('minimax-floating-ball');
-  if (!ball) return;
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VastAI Media. All rights reserved. | Empowering businesses with AI solutions.</p>
+        </div>
+    </footer>
 
-  // Initial animation
-  ball.style.opacity = '0';
-  ball.style.transform = 'translateY(20px)';
+    <!-- Vast AI Chat Widget -->
+    <div id="vast-ai-chat">
+        <div id="chat-widget" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000;">
+            <div id="chat-button" style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(45deg, #ff6b35, #f7931e); cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;" onclick="toggleChat()">
+                <svg width="30" height="30" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.35L2 22l5.65-1.05C9.96 21.64 11.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 15h-1v-1h1v1zm1-3h-1V9h1v5z"/>
+                </svg>
+            </div>
+            <div id="chat-window" style="position: absolute; bottom: 70px; right: 0; width: 350px; height: 500px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); display: none; flex-direction: column; overflow: hidden;">
+                <div style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; padding: 20px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 18px;">Vast AI Chat</h3>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.9;">Ask me anything!</p>
+                </div>
+                <div id="chat-messages" style="flex: 1; padding: 20px; overflow-y: auto;">
+                    <div style="background: #f5f5f5; padding: 12px; border-radius: 15px; margin-bottom: 10px;">
+                        <p style="margin: 0; color: #333;">👋 Hello! I'm your AI assistant. How can I help you learn more about VastAI Media's services?</p>
+                    </div>
+                </div>
+                <div style="padding: 20px; border-top: 1px solid #eee;">
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="chat-input" placeholder="Type your message..." style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 25px; outline: none;" onkeypress="if(event.key==='Enter') sendMessage()">
+                        <button onclick="sendMessage()" style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; border: none; border-radius: 50%; width: 45px; height: 45px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                            <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  setTimeout(() => {
-    ball.style.opacity = '1';
-    ball.style.transform = 'translateY(0)';
-  }, 500);
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  // Handle logo click
-  const ballContent = ball.querySelector('.minimax-ball-content');
-  ballContent.addEventListener('click', function (e) {
-    e.stopPropagation();
-    window.open('https://agent.minimax.io/agent', '_blank');
-    ball.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      ball.style.transform = 'scale(1)';
-    }, 100);
-  });
+        // Chat functionality
+        let chatOpen = false;
 
-  // Handle close button click
-  const closeIcon = ball.querySelector('.minimax-close-icon');
-  closeIcon.addEventListener('click', function (e) {
-    e.stopPropagation();
-    ball.style.opacity = '0';
-    ball.style.transform = 'translateY(20px)';
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            const chatButton = document.getElementById('chat-button');
+            
+            if (chatOpen) {
+                chatWindow.style.display = 'none';
+                chatButton.innerHTML = '<svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3.04 1.05 4.35L2 22l5.65-1.05C9.96 21.64 11.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm-1 15h-1v-1h1v1zm1-3h-1V9h1v5z"/></svg>';
+                chatOpen = false;
+            } else {
+                chatWindow.style.display = 'flex';
+                chatButton.innerHTML = '<svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+                chatOpen = true;
+            }
+        }
 
-    setTimeout(() => {
-      ball.style.display = 'none';
-    }, 300);
-  });
-}
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const message = input.value.trim();
+            
+            if (message) {
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.style.cssText = 'text-align: right; margin-bottom: 10px;';
+                userMsg.innerHTML = `<div style="background: linear-gradient(45deg, #ff6b35, #f7931e); color: white; padding: 12px; border-radius: 15px; display: inline-block; max-width: 80%;"><p style="margin: 0;">${message}</p></div>`;
+                messages.appendChild(userMsg);
+                
+                // Add AI response (simulated)
+                setTimeout(() => {
+                    const aiMsg = document.createElement('div');
+                    aiMsg.style.cssText = 'margin-bottom: 10px;';
+                    const responses = [
+                        "Thank you for your interest! VastAI Media specializes in AI-powered solutions for businesses. Would you like to know more about a specific service?",
+                        "Great question! Our AI solutions can help automate processes, analyze data, and create content. What's your main business challenge?",
+                        "I'd be happy to help! Our team can provide a custom consultation for your specific needs. Would you like to schedule a call?",
+                        "That's an excellent point! Our AI chatbots and automation tools can significantly improve customer experience. Let me know if you'd like a demo!",
+                        "Absolutely! We work with businesses of all sizes. Our AI solutions are scalable and can be customized to fit your budget and requirements."
+                    ];
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    aiMsg.innerHTML = `<div style="background: #f5f5f5; padding: 12px; border-radius: 15px;"><p style="margin: 0; color: #333;">🤖 ${randomResponse}</p></div>`;
+                    messages.appendChild(aiMsg);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initFloatingBall); 
-</script>
+        // Contact form handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Add some interactive animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
-
 </html>
+
