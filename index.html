@@ -7,6 +7,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script type="module" crossorigin src="/assets/index-ZylVMCXT.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-ByZFhA0N.css">
+  
+  <!-- Logo size and positioning fix -->
+  <style>
+/* Logo proper sizing - make it larger and more visible */
+header img[src*="logo"], 
+[class*="logo"] img, 
+img[alt*="logo"], 
+img[alt*="VAST"],
+img[src*="VAST"] {
+  max-width: 350px !important;
+  max-height: 100px !important;
+  min-width: 280px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Header container - reduced height and alignment */
+header, 
+[role="banner"],
+nav,
+.header {
+  min-height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: visible !important;
+  padding: 8px 0 !important;
+}
+
+/* Logo container - left alignment, not right */
+.logo-container,
+[class*="logo"],
+header > div,
+nav > div {
+  overflow: visible !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  justify-content: flex-start !important;
+}
+
+/* Navigation layout - logo on left, menu on right */
+header > div > div,
+nav > div > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Force logo to left side of header */
+header img,
+nav img {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+/* FORCE Chatbot to TOP RIGHT with maximum specificity */
+[id*=buildmyagent],
+[class*=buildmyagent],
+iframe[src*="buildmyagent.io"],
+.buildmyagent-widget,
+.widget-container,
+div[id*="buildmyagent"],
+div[class*="buildmyagent"],
+#buildmyagent-widget,
+.buildmyagent-iframe,
+[data-widget-id] {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 99999 !important;
+  transform: none !important;
+}
+
+/* Override any bottom positioning */
+[id*=buildmyagent][style*="bottom"],
+[class*=buildmyagent][style*="bottom"] {
+  bottom: auto !important;
+  top: 20px !important;
+}
+
+/* Hero section with DARK blue tech gradient for readable white text */
+section:first-of-type,
+.hero-section,
+[class*="hero"],
+[class*="gradient"],
+div[style*="background"] {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  position: relative !important;
+}
+
+/* Ensure hero content is readable */
+section:first-of-type > *,
+.hero-section > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+  </style>
 </head>
 
 <body>
@@ -30,54 +135,47 @@
         }, 2000);
       };
       document.body.appendChild(script);
+      
+      // FORCE chatbot to top right after it loads
+      setTimeout(function() {
+        forceChatbotPosition();
+      }, 3000);
     });
+    
+    // Function to force chatbot positioning
+    function forceChatbotPosition() {
+      // Find all possible chatbot elements
+      const selectors = [
+        '[id*="buildmyagent"]',
+        '[class*="buildmyagent"]', 
+        'iframe[src*="buildmyagent.io"]',
+        '.buildmyagent-widget',
+        '.widget-container',
+        '[data-widget-id]'
+      ];
+      
+      selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+          element.style.position = 'fixed';
+          element.style.top = '20px';
+          element.style.right = '20px';
+          element.style.bottom = 'auto';
+          element.style.left = 'auto';
+          element.style.zIndex = '99999';
+          element.style.transform = 'none';
+        });
+      });
+      
+      // Keep checking and fixing position every 2 seconds
+      setInterval(forceChatbotPosition, 2000);
+    }
   </script>
 
-<!-- Fix for hero background image and centering issues -->
-<style>
-/* Ensure hero background image displays properly */
-.hero-section, [class*="hero"], [class*="gradient"], [style*="background"] {
-  background-image: url('/images/business-automation-digital-transformation-workplace-tech-ai.jpg') !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  min-height: 600px !important;
-}
 
-/* Fix logo sizing issues */
-img[src*="logo"] {
-  max-height: 80px !important;
-  width: auto !important;
-  object-fit: contain !important;
-}
 
-/* Center hero content properly */
-section:first-of-type, div[class*="hero"], div[class*="gradient"] {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  padding: 4rem 2rem !important;
-}
-
-/* Ensure all hero text is centered */
-h1, h2, .hero-title, .hero-subtitle {
-  text-align: center !important;
-  max-width: 900px !important;
-  margin: 0 auto 1rem auto !important;
-}
-
-/* Force blue gradient with background image */
-div[style*="background"], section[class*="bg-"] {
-  background: linear-gradient(rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8)), 
-              url('/images/business-automation-digital-transformation-workplace-tech-ai.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-}
-</style>
-  <!-- MiniMax floating ball widget removed per user request -->
+  <!-- Add this to your HTML page, preferably before the closing </body> tag -->
+  <script src="https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js?widgetId=689e2bd0beb9977422571a04"></script>
 </body>
 
 </html>
