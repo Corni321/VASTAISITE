@@ -65,31 +65,65 @@ nav img {
   margin-left: 0 !important;
 }
 
-/* Chatbot positioned in TOP RIGHT */
+/* FORCE Chatbot to TOP RIGHT with maximum specificity */
 [id*=buildmyagent],
 [class*=buildmyagent],
 iframe[src*="buildmyagent.io"],
 .buildmyagent-widget,
-.widget-container {
+.widget-container,
+div[id*="buildmyagent"],
+div[class*="buildmyagent"],
+#buildmyagent-widget,
+.buildmyagent-iframe,
+[data-widget-id] {
   position: fixed !important;
   top: 20px !important;
   right: 20px !important;
   bottom: auto !important;
-  z-index: 9999 !important;
+  left: auto !important;
+  z-index: 99999 !important;
+  transform: none !important;
 }
 
-/* Hero section with blue tech gradient background */
+/* Override any bottom positioning */
+[id*=buildmyagent][style*="bottom"],
+[class*=buildmyagent][style*="bottom"] {
+  bottom: auto !important;
+  top: 20px !important;
+}
+
+/* Hero section with cleaner blue tech gradient background and opacity overlay */
 section:first-of-type,
 .hero-section,
 [class*="hero"],
 [class*="gradient"],
 div[style*="background"] {
-  background-image: url('/images/blue_gradient_tech_bg_1.png') !important;
+  background-image: url('/images/blue_gradient_tech_bg_2.png') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   background-attachment: fixed !important;
   position: relative !important;
+}
+
+/* Add subtle overlay for better text readability */
+section:first-of-type::before,
+.hero-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(30, 58, 138, 0.2) !important;
+  z-index: 1 !important;
+}
+
+/* Ensure hero content is above the overlay */
+section:first-of-type > *,
+.hero-section > * {
+  position: relative !important;
+  z-index: 2 !important;
 }
   </style>
 </head>
@@ -115,7 +149,41 @@ div[style*="background"] {
         }, 2000);
       };
       document.body.appendChild(script);
+      
+      // FORCE chatbot to top right after it loads
+      setTimeout(function() {
+        forceChatbotPosition();
+      }, 3000);
     });
+    
+    // Function to force chatbot positioning
+    function forceChatbotPosition() {
+      // Find all possible chatbot elements
+      const selectors = [
+        '[id*="buildmyagent"]',
+        '[class*="buildmyagent"]', 
+        'iframe[src*="buildmyagent.io"]',
+        '.buildmyagent-widget',
+        '.widget-container',
+        '[data-widget-id]'
+      ];
+      
+      selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+          element.style.position = 'fixed';
+          element.style.top = '20px';
+          element.style.right = '20px';
+          element.style.bottom = 'auto';
+          element.style.left = 'auto';
+          element.style.zIndex = '99999';
+          element.style.transform = 'none';
+        });
+      });
+      
+      // Keep checking and fixing position every 2 seconds
+      setInterval(forceChatbotPosition, 2000);
+    }
   </script>
 
 
