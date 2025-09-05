@@ -12,7 +12,71 @@
 <body>
   <div id="root"></div>
   
-  <!-- Removed BuildMyAgent.io chatbot to fix conflict with MiniMax floating ball -->
+  <!-- BuildMyAgent.io Chatbot Widget -->
+  <script>
+    // Load chatbot after page is ready
+    window.addEventListener('load', function() {
+      const script = document.createElement('script');
+      script.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
+      script.async = true;
+      script.onerror = function() {
+        console.log('Chatbot script failed to load, retrying...');
+        // Retry loading the script once
+        setTimeout(function() {
+          const retryScript = document.createElement('script');
+          retryScript.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
+          retryScript.async = true;
+          document.body.appendChild(retryScript);
+        }, 2000);
+      };
+      document.body.appendChild(script);
+    });
+  </script>
+
+<!-- Fix for hero background image and centering issues -->
+<style>
+/* Ensure hero background image displays properly */
+.hero-section, [class*="hero"], [class*="gradient"], [style*="background"] {
+  background-image: url('/images/business-automation-digital-transformation-workplace-tech-ai.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  min-height: 600px !important;
+}
+
+/* Fix logo sizing issues */
+img[src*="logo"] {
+  max-height: 80px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+/* Center hero content properly */
+section:first-of-type, div[class*="hero"], div[class*="gradient"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 4rem 2rem !important;
+}
+
+/* Ensure all hero text is centered */
+h1, h2, .hero-title, .hero-subtitle {
+  text-align: center !important;
+  max-width: 900px !important;
+  margin: 0 auto 1rem auto !important;
+}
+
+/* Force blue gradient with background image */
+div[style*="background"], section[class*="bg-"] {
+  background: linear-gradient(rgba(59, 130, 246, 0.8), rgba(37, 99, 235, 0.8)), 
+              url('/images/business-automation-digital-transformation-workplace-tech-ai.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+</style>
   <!-- MiniMax floating ball widget removed per user request -->
 </body>
 
