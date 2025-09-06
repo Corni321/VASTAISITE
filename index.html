@@ -25,6 +25,7 @@ img[src*="VAST"] {
   display: block !important;
 }
 
+<script src="https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js?widgetId=689e2bd0beb9977422571a04"></script>
 /* Header container - reduced height and alignment */
 header, 
 [role="banner"],
@@ -89,43 +90,7 @@ section:first-of-type > *,
 
 <body>
   <div id="root"></div>
-  
-  <!-- BuildMyAgent.io Chatbot Widget -->
-  <script>
-    // Load chatbot after page is ready
-    window.addEventListener('load', function() {
-      const script = document.createElement('script');
-      script.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
-      script.async = true;
-      script.onerror = function() {
-        console.log('Chatbot script failed to load, retrying...');
-        // Retry loading the script once
-        setTimeout(function() {
-          const retryScript = document.createElement('script');
-          retryScript.src = 'https://www.buildmyagent.io/widget/689e2bd0beb9977422571a04/widget-professional.js';
-          retryScript.async = true;
-          document.body.appendChild(retryScript);
-        }, 2000);
-      };
-      document.body.appendChild(script);
-      
-      // FORCE chatbot to top right after it loads
-      setTimeout(function() {
-        forceChatbotPosition();
-      }, 3000);
-    });
-    
-    // Function to force chatbot positioning
-    function forceChatbotPosition() {
-      // Find all possible chatbot elements
-      const selectors = [
-        '[id*="buildmyagent"]',
-        '[class*="buildmyagent"]', 
-        'iframe[src*="buildmyagent.io"]',
-        '.buildmyagent-widget',
-        '.widget-container',
-        '[data-widget-id]'
-      ];
+
       
       selectors.forEach(selector => {
         const elements = document.querySelectorAll(selector);
